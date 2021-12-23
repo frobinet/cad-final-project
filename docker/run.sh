@@ -9,6 +9,8 @@ docker run -it --rm -d \
     -v /tmp/log:/root/.ros \
     -v $(pwd):/host \
     --workdir /host \
+    -e DOCKER_HOST_UID=$(id -u) \
+    -e DOCKER_HOST_GID=$(id -g) \
     360lab/cad-final-project bash
 
 echo "Container '$NAME' is now running. You can develop inside it by attaching VSCode to it."

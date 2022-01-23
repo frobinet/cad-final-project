@@ -28,6 +28,8 @@ To avoid mismatches in software versions, we will be developping and running the
 docker run --rm hello-world
 ```
 
+Once this works, pull the project Docker image using `docker pull 360lab/cad-final-project`
+
 #### Attaching VSCode to the Container
 
 Start VSCode and open this project. VSCode might suggest to install some recommended extensions, accept this and reload VSCode. It will also suggest opening the project in a container, you should also accept this. This will let VSCode start the container with all the right settings so you don't have to worry about it.

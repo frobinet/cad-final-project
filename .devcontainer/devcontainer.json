@@ -1,0 +1,17 @@
+{
+  "image": "360lab/cad-final-project",
+  "extensions": ["ms-python.vscode-pylance"],
+  "forwardPorts": [4567],
+  "containerUser": "root",
+  "remoteUser": "user",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/host,type=bind",
+  "workspaceFolder": "/host",
+  "runArgs": [
+    "--env-file",
+    ".devcontainer/devcontainer.env",
+    "--name",
+    "cad-final-project"
+  ],
+  "initializeCommand": "bash ${localWorkspaceFolder}/.devcontainer/export_uid_gid.sh",
+  "overrideCommand": false
+}

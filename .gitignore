@@ -1,3 +1,4 @@
+ros/src/CMakeLists.txt
 *.py[cod]
 build
 devel

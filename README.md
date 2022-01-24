@@ -13,9 +13,10 @@ Both Linux and MacOS are supported out of the box. Windows is supported through 
 ### Running the simulator
 
 1. Download the [latest version of the simulator](https://github.com/udacity/CarND-Capstone/releases/tag/v1.3) for your host system (Windows, MacOS or Linux), unzip it.
-1. Running the `sys_int` executable should display a window where you can pick screen resolution and graphics quality. Select "1024x728" at most and "Fastest", then press "Play" to start the simulator.
-1. We will be working with the "Highway" environment
-1. You should be able to move the car using the arrow keys.
+1. Running the `sys_int` executable should display a window where you can pick screen resolution and graphics quality (executable is not signed, proceed anyway). Select "1024x728" at most and "Fastest", then press "Play" to start the simulator.
+1. **If the simulator's file cannot be executed, you may need to make it executable on Linux or MacOS** using something like: `chmod +x sys_int.app/Contents/MacOS/capstone_v2`
+3. We will be working with the "Highway" environment
+4. You should be able to move the car using the arrow keys.
 
 #### Running the Docker Container
 
@@ -26,6 +27,8 @@ To avoid mismatches in software versions, we will be developping and running the
 ```bash
 docker run --rm hello-world
 ```
+
+Once this works, pull the project Docker image using `docker pull 360lab/cad-final-project`
 
 #### Attaching VSCode to the Container
 

@@ -27,22 +27,12 @@ RUN pip3 install \
         catkin_pkg \
         rospkg
 
-
-# Create user
-# UID and GID will be dynamically changed to match the UID/GID of the user running the container in entrypoint.sh
-RUN addgroup --gid 1000 user && useradd user -u 1000 -g 1000 -m -s /bin/bash
-
-USER user
-RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc 
-USER root
-
-COPY entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
-
-CMD ["sleep", "infinity"]
-WORKDIR /host
-
 # NEEDED?
 RUN sed -i 's/self.eio.send(sid, encoded_packet, binary=False)/self.eio.send(sid, encoded_packet)/g' /opt/conda/lib/python3.8/site-packages/socketio/server.py && \
     sed -i 's/self.eio.send(sid, ep, binary=binary)/self.eio.send(sid, ep)/g' /opt/conda/lib/python3.8/site-packages/socketio/server.py
 
+# Create user
+# UID and GID will be dynamically changed by VSCode to match the host user running the container
+RUN addgroup --gid 1000 user && useradd user -u 1000 -g 1000 -m -s /bin/bash
+USER user
+RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc 

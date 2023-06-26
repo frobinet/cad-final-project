@@ -28,7 +28,7 @@ To avoid mismatches in software versions, we will be developping and running the
 docker run --rm hello-world
 ```
 
-Once this works, pull the project Docker image using `docker pull 360lab/cad-final-project`
+If you are using a standard CPU architecture (x86/x64), you can now simply pull the project Docker image using `docker pull 360lab/cad-final-project`. If you are using a different architecture (e.g. the ARM architecture used by recent Macs), you should build the docker image locally: `cd docker && ./build.sh`. 
 
 #### Attaching VSCode to the Container
 

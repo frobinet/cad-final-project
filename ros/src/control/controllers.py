@@ -1,5 +1,6 @@
 
 from control.lowpass import LowPassFilter
+from control.pid import PID
 from math import atan
 import rospy
 
@@ -35,14 +36,21 @@ class ThrottleBrakeController():
         self.wheel_radius = wheel_radius
         self.last_time = rospy.get_time()
 
+        # Note: you may need to tune the PID parameters Kp, Ki and Kd to reach optimal behavior, 
+        # but you may start from the given initial values and only tune them near the end of the project.
+        self.pid = PID(kp=0.3, ki=0.1, kd=0, mn=0, mx=0.7)
+
+
     def control(self, current_speed, target_speed):
-        # TODO You can implement and tune a PID Controller here to control the throttle
-        # TODO After predicting throttle, you can handle braking as a postprocessing step
+        current_speed = self.lowpass_filter.filter(current_speed) # Use LowPass filter to filter noise from velocity, don't change this
+        current_time = rospy.get_time()
+
+        # TODO Step 1: Use the provided PID controller self.pid here to control the throttle (can leave the PID params unchanged at the start, and tune them a bit more when everything else works)
+        # TODO Step 2: After predicting throttle, you can handle braking as a postprocessing step
         #   - The car has an automatic transmission, so if target velocity is 0 and current linear velocity is small or zero, you should apply brake (Need ~700Nm brake so the car won't move when it's currently at speed 0)
         #   - don't brake and throttle at the same time! 
         #   - Apply brake if throttle is already small, but you need to slow down
         #   - In order to get a smooth ride, you should also not decelerate more than the given deceleration limit.
-        # For now, we just blindly accelerate!
-        current_speed = self.lowpass_filter.filter(current_speed) # Use LowPass filter to filter noise from velocity
+        # For now, this code just blindly accelerates!
         throttle, brake = 1.0, 0.0
         return throttle, brake 

@@ -23,7 +23,7 @@ RUN pip3 install \
         python-socketio==4.4.0 \
         ujson==1.35 \
         wsaccel==0.6.2 \
-        empy \
+        empy==3.3.4 \
         catkin_pkg \
         rospkg
 
